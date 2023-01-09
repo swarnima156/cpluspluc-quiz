@@ -6,20 +6,22 @@
 #include<cstdlib> 
 #include<ctime>
 #include<map>
+using namespace std;
+
 
 class Mountains
 {
 
 private: 
-  	std::vector<std::string> filenames;	
+  	vector<string> filenames;	
 
 public:
 	//Time complexity: 
-	Mountains(std::vector<std::string>& filenames);
+	Mountains(vector<string>& filenames);
 
 	//Time complexity:
-	std::string getRandomMountain();
+	string getRandomMountain();
 
 	//Time complexity:
-	bool checkRange(std::string mountain, std::string range);
+	bool checkRange(string mountain, string range);
 };

@@ -1,55 +1,52 @@
 #include "Mountains.h"
 
-Mountains::Mountains(std::vector<std::string>& filenames)
-{
-    std::srand(std::time(0));
+
+Mountains::Mountains(vector<string>& filenames)
+{ 
     this->filenames = filenames;
 }
 
-std::string Mountains::getRandomMountain()
-{
-    // Generate a random index between 0 and the number of filenames
-    int index = std::rand() % filenames.size();
+string Mountains::getRandomMountain() {
 
-    // Open the file at the randomly-generated index
-    std::ifstream file(filenames[index]);
+  srand(time(0));
 
-    // Check if the file was successfully opened
-    if (!file.is_open()) {
-      std::cerr << "Error opening file!" << std::endl;
-      return "";
-    }
+  vector<string> filenames = {"Alps.txt", "Pyrenees.txt", "Carpathians.txt", "Icelandic Highlands.txt"};
 
-    // Read the names from the file into a vector
-    std::vector<std::string> names;
-    std::string name;
-    while (std::getline(file, name)) {
-      names.push_back(name);
-    }
+  
 
-    // Check if we read any names from the file
-    if (names.empty()) {
-      std::cerr << "No names found in file!" << std::endl;
-      return "";
-    }
+  int index = rand() % filenames.size();
 
-    // Generate a random index for a name
-    int nameIndex = std::rand() % names.size();
+  string filename = filenames[index];
 
-    // Return the random mountain name
-    return names[nameIndex];
+  ifstream infile(filename);
+
+  if (!infile) {
+    cerr << "Error: could not open file " << filename << " for reading" << endl;
+  }
+
+  // Read the contents of the file into a vector of strings
+  vector<string> names;
+  string name;
+  while(getline(infile, name)) {
+    names.push_back(name);
+  }
+
+  infile.close();
+
+  int nameIndex = rand() % names.size();
+
+  string randomMountain = names[nameIndex];
+
+  return randomMountain;
 
 }
 
-bool Mountains::checkRange(std::string mountain, std::string range)
+bool Mountains::checkRange(string mountain, string range)
 {
-    std::map<std::string, std::string> answerKey = {
-      
-    
-    };
-
 
   
   }
+
+ 
 
 
